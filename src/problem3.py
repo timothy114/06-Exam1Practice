@@ -2,8 +2,8 @@
 PRACTICE Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Timothy Li.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -103,6 +103,16 @@ def run_test_problem3a():
     # your choice), add 1 more test case of your own choosing.
     # ------------------------------------------------------------------
 
+    # Test 5 (it is on window 4):
+    window4 = rg.RoseWindow(450,300)
+    point = rg.Point(30, 30)
+    expected = 36
+    answer = problem3a(window1, point, 6)
+    print()
+    print('Test 1 expected:', expected)
+    print('       actual:  ', answer)
+
+    window1.close_on_mouse_click()
 
 def problem3a(window, point, n):
     """
@@ -137,7 +147,7 @@ def problem3a(window, point, n):
         :type n:      int
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -145,6 +155,24 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # ------------------------------------------------------------------
+
+    top = point
+    bot = rg.Point(point.x,point.y+50)
+    t = 1
+    sum = 0
+    for i in range(n):
+        line = rg.Line(top,bot)
+        if t > 13:
+            t = 13
+        line.thickness = t
+        sum += t
+        line.attach_to(window)
+        window.render()
+        t += 2
+        top = rg.Point(top.x+20,top.y+10)
+        bot = rg.Point(top.x,top.y+50)
+    return sum
+
 
 
 def run_test_problem3b():

@@ -320,14 +320,16 @@ def problem0c(circle, n, window):
     # ------------------------------------------------------------------
 
     #Drawing the circle
-    circle.attach_to(window)
-    window.render(0.5)
+    #circle.attach_to(window)
+    #window.render(0.5)
 
     point = circle.center
     radius = circle.radius
-    point.x = point.x + 2*radius
-    for i in range(n):
+    #point.x = point.x + 2*radius
+    for i in range(n+1):
         circle1 = rg.Circle(point,radius)
+        if i == 0:
+            circle1.fill_color = circle.fill_color
         circle1.attach_to(window)
         window.render(0.5)
         point.x = point.x + 2*radius
